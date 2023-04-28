@@ -13,9 +13,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: message
-        name: Generate message
+        name: Generate message Test
         run: |
              echo "ejecutando los test"
+
+  build:
+    needs: 'test'
+    name: '🚀Build'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Generate message Build
+      run: |
+             git_hash=$(git rev-parse --short "$GITHUB_SHA")
+             echo $git_hash
 
   # docker:
   #   needs: [ test, build ]
