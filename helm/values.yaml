@@ -1,0 +1,21 @@
+NamespaceName: app-backend
+
+DeploymentName: deployment-app
+
+ServiceName: service-app
+
+labelsDeployment:
+  app.kubernetes.io/name: backend
+
+labels:
+  app.kubernetes.io/name: backend
+ 
+matchLabels:
+  app.kubernetes.io/name: backend
+  
+selector:
+  app.kubernetes.io/name: backend
+
+containers:
+  name: app-backen-container
+  image: crist/app-backend:1.0.0

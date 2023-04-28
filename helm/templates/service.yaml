@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Values.NamespaceName }}
+  name: {{ .Values.ServiceName }}
+  labels:
+    {{- toYaml .Values.labels | nindent 4 }}
+spec:
+  type: NodePort
+  selector:
+    {{- toYaml .Values.selector | nindent 4 }}
+  ports:
+  - port: 8080
+    targetPort: 80
+    protocol: TCP
